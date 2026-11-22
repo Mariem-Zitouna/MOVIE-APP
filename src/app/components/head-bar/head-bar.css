@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: #e50914;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 22px;
+}
+
+button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #e5e5e5;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+button:hover {
+  color: #b3b3b3;
+}
+
+fa-icon {
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}

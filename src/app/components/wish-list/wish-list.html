@@ -1,0 +1,15 @@
+<div class="container">
+    @for (movie of wishList; track movie.id) {
+        <div class="movie-card" (click)="navigateTo(movie)">
+            <img
+                [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+                [alt]="movie.title">
+
+            <div class="movie-details">
+                <h2>{{movie.title}}</h2>
+            </div>
+        </div>
+    } @empty {
+        <p>Your wish list is empty.</p>
+    }
+</div>

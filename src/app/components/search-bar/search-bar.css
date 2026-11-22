@@ -1,0 +1,41 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 300px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #555;
+  transition: border-color 0.2s;
+}
+
+.search-container:focus-within {
+  border-color: #fff;
+}
+
+label {
+  font-size: 13px;
+  color: #808080;
+}
+
+input {
+  all: unset;
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+input::placeholder {
+  color: #777;
+}
+
+fa-icon {
+  color: #b3b3b3;
+}
+
+@media (max-width: 700px) {
+  .search-container {
+    width: 100%;
+  }
+}

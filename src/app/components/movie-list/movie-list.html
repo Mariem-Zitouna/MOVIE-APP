@@ -1,0 +1,57 @@
+@if (topMovies().length) {
+    <section class="hero">
+        @for (movie of topMovies(); track movie.id; let i = $index) {
+            <div class="slide" [class.active]="i === current() % topMovies().length">
+                <img
+                    [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+                    [alt]="movie.title">
+
+                <div class="slide-content">
+                    <span class="tag">N°{{ i + 1 }} top rated</span>
+                    <h1>{{ movie.title }}</h1>
+                    <div class="meta">
+                        <span class="score"><fa-icon [icon]="faStar" /> {{ movie.vote_average | number:'1.1-1' }}</span>
+                        <span>{{ movie.release_date.slice(0, 4) }}</span>
+                        <span class="lang">{{ movie.original_language }}</span>
+                    </div>
+                    <p>{{ movie.overview }}</p>
+                    <button (click)="navigateTo(movie)"><fa-icon [icon]="faCircleInfo" /> More info</button>
+                </div>
+            </div>
+        }
+
+        <div class="dots">
+            @for (movie of topMovies(); track movie.id; let i = $index) {
+                <button
+                    [class.active]="i === current() % topMovies().length"
+                    (click)="goToSlide(i)"
+                    [attr.aria-label]="movie.title"></button>
+            }
+        </div>
+    </section>
+}
+
+<div class="toolbar">
+    <h2>Now playing</h2>
+    <div class="sort">
+        <button (click)="sortByDate()">Most recent</button>
+        <button (click)="sortByVote()">Best voted</button>
+    </div>
+</div>
+
+<div class="container">
+    @for(movie of movieService.movieList(); track movie.id) {
+        <div class="movie-card" (click)="navigateTo(movie)">
+            <img
+                [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+                [alt]="movie.title">
+
+            <span class="rating"><fa-icon [icon]="faStar" /> {{ movie.vote_average | number:'1.1-1' }}</span>
+
+            <div class="movie-details">
+                <h2>{{movie.title}}</h2>
+                <p>{{movie.overview}}</p>
+            </div>
+        </div>
+    }
+</div>
